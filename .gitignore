@@ -1,0 +1,46 @@
+# ---------- Gradle ----------
+.gradle/
+build/
+*/build/
+kotlin-js-store/
+
+# Gradle wrapper (gradlew, gradlew.bat, gradle/wrapper/*.jar) SENGAJA ikut di-commit
+
+# Konfigurasi lokal mesin ini (berisi path SDK) — jangan pernah di-commit
+local.properties
+
+# ---------- Android Studio / IntelliJ ----------
+.idea/
+*.iml
+*.ipr
+*.iws
+.navigation/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# ---------- Android build output ----------
+*.apk
+*.aab
+*.ap_
+*.dex
+*.hprof
+bin/
+gen/
+out/
+captures/
+
+# ---------- Laporan log ----------
+*.log
+
+# ---------- Secrets (release signing) ----------
+*.jks
+*.keystore
+
+# ---------- macOS ----------
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
