@@ -67,6 +67,18 @@ fun FormDataDiri(
                 }
         }
         }
+                OutlinedTextField(
+                value = textAlamat,
+                singleLine = true,
+                shape = MaterialTheme.shapes.large,
+                modifier = Modifier
+                    .padding(250.dp),
+                label = { Text("alamat lengkap")},
+                    onValueChange = {
+                    textAlamat = it
+                }
+            )
+        }
     }
 
     ){}
