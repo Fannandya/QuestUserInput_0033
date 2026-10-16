@@ -1,10 +1,14 @@
 package com.mamay.pertemuan5
 
+import android.provider.MediaStore
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.RadioButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -34,24 +38,36 @@ fun FormDataDiri(
 
     Column(
         modifier = Modifier
-            .padding(dimensionResource(id = R.dimen.padding_atas)),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally{
+            .padding(top = 50.dp),
+        verticalArrangement = Arrangement.Top,
+        horizontalAlignment = Alignment.CenterHorizontally) {
             OutlinedTextField(
                 value = textNama,
                 singleLine = true,
-                shape = MaterialTheme(id = R.dimen.padding_small),
+                shape = MaterialTheme.shapes.large,
                 modifier = Modifier
                     .padding(250.dp),
-                label = { Text(text = stringResource(id = R.string.label_nama)},
+                label = { Text(text = "nama lengkap"},
                 onValueChange = {
                     textNama = it
                 }
-
             )
+        Row() {
+            gender.forEach { item ->
+                Row(
+                    modifier = Modifier.selectable(
+                        selected = textJK == item,
+                        onClick = {textJK = item}
+                ),
+                    verticalAlignment = Alignment.CenterVertically){
+                    RadioButton(selected = textJK == item,
+                        onClick = {textJK = item}
+                    )
+                    Text(item)
+                }
         }
-
-    ) {
-
+        }
     }
+
+    ){}
 }
