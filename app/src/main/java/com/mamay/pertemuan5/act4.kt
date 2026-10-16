@@ -1,6 +1,5 @@
 package com.mamay.pertemuan5
 
-import android.provider.MediaStore
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -8,6 +7,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.material3.Button
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -77,19 +78,18 @@ fun FormDataDiri(
                 shape = MaterialTheme.shapes.large,
                 modifier = Modifier
                     .padding(250.dp),
-                label = { Text("alamat lengkap")},
-                    onValueChange = {
+                label = {Text("alamat lengkap")},
+                onValueChange = {
                     textAlamat = it
                 }
             )
         HorizontalDivider(
             modifier = Modifier
                 .padding(
-                    bottom =
-                        dimensionResource(id = R.dimen.padding_medium),
-                    top = dimensionResource(id = R.dimen.padding_medium),
-                )
-            thickness = dimensionResource(1dp),
+                    bottom = dimensionResource(id = R.dimen.padding_medium),
+                    top = dimensionResource(id = R.dimen.padding_medium)
+                ),
+            thickness = dimensionResource(id = R.dimen.divider_tipis),
             color = Color.DarkGray
         )
         Button(
@@ -101,6 +101,21 @@ fun FormDataDiri(
                 alamat = textAlamat
                 jenis = textJK
             }
+        ) {
+            Text(stringResource(id = R.string.submit))
+        }
+        HorizontalDivider(
+            modifier = Modifier.padding(
+                bottom =
+                    dimensionResource(id = R.dimen.padding_medium),
+                top = dimensionResource(id = R.dimen.padding_medium)
+            ),
+            thickness = dimensionResource(id = R.dimen.divider_tipis),
+            color = Color.DarkGray
+            )
+        )
+        ElevatedCard(
+            elevation = CardDefaults.cardElevation(defaultElevation = 10.dp),
         ) { }
         }
     }
