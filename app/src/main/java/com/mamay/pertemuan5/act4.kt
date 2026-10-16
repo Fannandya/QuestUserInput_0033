@@ -15,6 +15,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -26,12 +27,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import org.w3c.dom.Text
 
 @Composable
 fun FormDataDiri(
-    modifier: Modifier
+    modifier: Modifier = Modifier
 ){
     // variabel untuk mengingat input dari keyboard
     var textNama by remember { mutableStateOf("") }
@@ -45,47 +44,50 @@ fun FormDataDiri(
     val gender: List<String> = listOf("Laki-laki", "Perempuan")
 
     Column(
-        modifier = Modifier
+        modifier = modifier
             .padding(top = 50.dp),
         verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment.CenterHorizontally) {
-            OutlinedTextField(
-                value = textNama,
-                singleLine = true,
-                shape = MaterialTheme.shapes.large,
-                modifier = Modifier
-                    .padding(250.dp),
-                label = { Text(text = "nama lengkap"},
-                onValueChange = {
-                    textNama = it
-                }
-            )
-        Row() {
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        OutlinedTextField(
+            value = textNama,
+            singleLine = true,
+            shape = MaterialTheme.shapes.large,
+            modifier = Modifier
+                .padding(20.dp),
+            label = { Text(text = "nama lengkap") },
+            onValueChange = {
+                textNama = it
+            }
+        )
+        Row {
             gender.forEach { item ->
                 Row(
                     modifier = Modifier.selectable(
                         selected = textJK == item,
-                        onClick = {textJK = item}
-                ),
-                    verticalAlignment = Alignment.CenterVertically){
-                    RadioButton(selected = textJK == item,
-                        onClick = {textJK = item}
+                        onClick = { textJK = item }
+                    ),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    RadioButton(
+                        selected = textJK == item,
+                        onClick = { textJK = item }
                     )
                     Text(item)
                 }
+            }
         }
-        }
-                OutlinedTextField(
-                value = textAlamat,
-                singleLine = true,
-                shape = MaterialTheme.shapes.large,
-                modifier = Modifier
-                    .padding(250.dp),
-                label = {Text("alamat lengkap")},
-                onValueChange = {
-                    textAlamat = it
-                }
-            )
+        OutlinedTextField(
+            value = textAlamat,
+            singleLine = true,
+            shape = MaterialTheme.shapes.large,
+            modifier = Modifier
+                .padding(20.dp),
+            label = { Text("alamat lengkap") },
+            onValueChange = {
+                textAlamat = it
+            }
+        )
         HorizontalDivider(
             modifier = Modifier
                 .padding(
@@ -109,13 +111,11 @@ fun FormDataDiri(
         }
         HorizontalDivider(
             modifier = Modifier.padding(
-                bottom =
-                    dimensionResource(id = R.dimen.padding_medium),
+                bottom = dimensionResource(id = R.dimen.padding_medium),
                 top = dimensionResource(id = R.dimen.padding_medium)
             ),
             thickness = dimensionResource(id = R.dimen.divider_tipis),
             color = Color.DarkGray
-            )
         )
         ElevatedCard(
             elevation = CardDefaults.cardElevation(defaultElevation = 10.dp),
@@ -142,8 +142,7 @@ fun FormDataDiri(
                     text = "Alamat: " + alamat,
                     color = Color.White
                 )
-
             }
         }
-        }
     }
+}
