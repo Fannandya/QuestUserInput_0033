@@ -29,9 +29,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun FormDataDiri(
-    modifier: Modifier = Modifier
-){
+fun FormDataDiri(modifier: Modifier)
+{
     // variabel untuk mengingat input dari keyboard
     var textNama by remember { mutableStateOf("") }
     var textAlamat by remember { mutableStateOf("") }
@@ -55,7 +54,7 @@ fun FormDataDiri(
             shape = MaterialTheme.shapes.large,
             modifier = Modifier
                 .padding(20.dp),
-            label = { Text(text = "nama lengkap") },
+            label = { Text(stringResource(id = R.string.label_nama)) },
             onValueChange = {
                 textNama = it
             }
@@ -83,7 +82,7 @@ fun FormDataDiri(
             shape = MaterialTheme.shapes.large,
             modifier = Modifier
                 .padding(20.dp),
-            label = { Text("alamat lengkap") },
+            label = { Text(stringResource(id = R.string.label_alamat)) },
             onValueChange = {
                 textAlamat = it
             }
@@ -119,14 +118,14 @@ fun FormDataDiri(
         )
         ElevatedCard(
             elevation = CardDefaults.cardElevation(defaultElevation = 10.dp),
-            colors = CardDefaults.cardColors(containerColor = Color.Black),
+            colors = CardDefaults.cardColors(containerColor = Color.Gray),
             modifier = Modifier
                 .height(100.dp)
                 .width(300.dp)
         ) {
             Column(
                 modifier = Modifier.padding(
-                    horizontal = 5.dp,
+                    horizontal = 15.dp,
                     vertical = 15.dp,
                 )
             ) {
